@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+	<link rel="stylesheet" type="text/css" href="styles.css" /> 
+    <style>
+body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+           
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .converter {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        select, input {
+            padding: 10px;
+            width: 100%;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        p#result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+ 
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Temperature Converter</h1>
+    </header>
+    <main>
+        <div class="converter">
+            <label for="fromScale">From:</label>
+            <select id="fromScale">
+                <option value="Celsius">Celsius</option>
+                <option value="Fahrenheit">Fahrenheit</option>
+                <option value="Kelvin">Kelvin</option>
+            </select>
+            <input type="number" id="temperature" placeholder="Enter temperature">
+            <button id="convertButton">Convert</button>
+            <label for="toScale">To:</label>
+            <select id="toScale">
+                <option value="Celsius">Celsius</option>
+                <option value="Fahrenheit">Fahrenheit</option>
+                <option value="Kelvin">Kelvin</option>
+            </select>
+            <p id="result"></p>
+        </div>
+	<script>
+	
+    function convertTemperature() 
+    {
+        const fromScale = document.getElementById("fromScale").value;
+        const toScale = document.getElementById("toScale").value;
+        const temperature = parseFloat(document.getElementById("temperature").value);
+        let convertedTemperature;
+
+        let celsiusTemperature;
+
+        if (fromScale === "Celsius")
+        {
+            celsiusTemperature = temperature
+        } 
+        else if (fromScale === "Fahrenheit") 
+        {
+            celsiusTemperature = (temperature - 32) * (5/9)
+        } 
+        else if (fromScale === "Kelvin") 
+        {
+            celsiusTemperature = temperature - 273.15
+        } 
+        else 
+        {
+            alert("Invalid input. Please select a valid temperature scale.")
+    
+        }
+
+        if (toScale === "Celsius") {
+            convertedTemperature = celsiusTemperature
+        } 
+        else if (toScale === "Fahrenheit") {
+            convertedTemperature = (celsiusTemperature * 9/5) + 32
+        } 
+        else if (toScale === "Kelvin") {
+            convertedTemperature = celsiusTemperature + 273.15
+        } 
+        else 
+        {
+            alert("Invalid input. Please select a valid temperature scale.")
+            
+        }
+
+        const resultElement = document.getElementById("result");
+        resultElement.textContent = `${temperature} ${fromScale} is equal to ${convertedTemperature.toFixed(2)} ${toScale}`;
+    }
+
+    document.getElementById("convertButton").addEventListener("click", convertTemperature);
+
+	</script>
+    </main>
+    
+</body>
+</html>
