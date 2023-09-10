@@ -68,14 +68,19 @@ body {
             margin-top: 20px;
             font-size: 18px;
         }
- 
+ 	h2 {
+		text-align: center;
+	}
+	
     </style>
 </head>
 <body>
+	
     <header>
         <h1>Temperature Converter</h1>
     </header>
     <main>
+	
         <div class="converter">
             <label for="fromScale">From:</label>
             <select id="fromScale">
@@ -84,13 +89,14 @@ body {
                 <option value="Kelvin">Kelvin</option>
             </select>
             <input type="number" id="temperature" placeholder="Enter temperature">
-            <button id="convertButton">Convert</button>
+            
             <label for="toScale">To:</label>
             <select id="toScale">
                 <option value="Celsius">Celsius</option>
                 <option value="Fahrenheit">Fahrenheit</option>
                 <option value="Kelvin">Kelvin</option>
             </select>
+		<button id="convertButton">Convert</button>
             <p id="result"></p>
         </div>
 	<script>
@@ -145,6 +151,7 @@ body {
 
 	</script>
     </main>
-    
+	<br><br><br>
+    <h2>By Jampani Sravanthi</h2>
 </body>
 </html>
